@@ -56,7 +56,11 @@ export default function StyleLayout({
 
   return (
     <main className="flex h-screen">
-      <nav className="w-64 border-r border-border p-4">
+      <nav
+        className="w-64 min-w-64 border-r border-border p-4"
+        role="navigation"
+        aria-label="Component navigation"
+      >
         <ul className="flex flex-col gap-2">
           {components.map((component) => (
             <li key={component.id}>
@@ -74,7 +78,9 @@ export default function StyleLayout({
           ))}
         </ul>
       </nav>
-      <div className="flex-1 overflow-y-auto p-4">{children}</div>
+      <div className="flex-1 overflow-y-auto p-4 scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent">
+        {children}
+      </div>
     </main>
   );
 }
