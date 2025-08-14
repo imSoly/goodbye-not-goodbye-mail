@@ -1,19 +1,33 @@
+import clsx from "clsx";
+import Image from "next/image";
 import Link from "next/link";
+import HamburgerIcon from "./icons/HamburgerIcon";
 import { ThemeToggle } from "./theme-toggle";
 
 export default function Header() {
   return (
-    <header className="flex justify-between items-center p-4 border-b border-border">
-      <div className="flex items-center gap-4">
-        <Link href="/">
-          <h1 className="text-2xl font-bold">Style Gallery</h1>
+    <header className="flex justify-between items-center p-2">
+      <div className="flex items-center">
+        <div
+          className={clsx(
+            "w-12 h-12 flex items-center justify-center mx-1",
+            "hover:bg-background-hover rounded-full",
+            "cursor-pointer"
+          )}
+        >
+          <HamburgerIcon />
+        </div>
+        <Link href="/mail">
+          <h1 className="text-2xl font-bold">
+            <Image
+              src="/images/logo.png"
+              alt="Logo"
+              width={109}
+              height={40}
+              priority
+            />
+          </h1>
         </Link>
-        <nav className="flex items-center gap-4">
-          <Link href="/style/flat">Flat</Link>
-          <Link href="/style/glassmorphism">Glassmorphism</Link>
-          <Link href="/style/neumorphism">Neumorphism</Link>
-          <Link href="/style/claymorphism">Claymorphism</Link>
-        </nav>
       </div>
       <ThemeToggle />
     </header>

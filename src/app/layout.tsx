@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import Header from "./components/Header";
+import LNB from "./components/LNB";
+import RNB from "./components/RNB";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+// Inter 폰트
+const inter = Inter({
+  variable: "--font-inter",
+  fallback: ["Helvetica", "Arial", "sans-serif"],
 });
 
 export const metadata: Metadata = {
@@ -25,11 +23,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${inter.variable} antialiased flex flex-col h-screen`}>
         <Header />
-        {children}
+        <div className="flex flex-1 min-h-0">
+          <LNB />
+          <div className="flex-1 overflow-auto">{children}</div>
+          <RNB />
+        </div>
       </body>
     </html>
   );
