@@ -1,3 +1,6 @@
+"use client";
+
+import { useNavigateStore } from "@/store/navigateStore";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
@@ -5,6 +8,8 @@ import HamburgerIcon from "./icons/HamburgerIcon";
 import { ThemeToggle } from "./theme-toggle";
 
 export default function Header() {
+  const { toggleIsCollapsed } = useNavigateStore();
+
   return (
     <header className="flex justify-between items-center p-2">
       <div className="flex items-center">
@@ -14,6 +19,7 @@ export default function Header() {
             "hover:bg-background-hover rounded-full",
             "cursor-pointer"
           )}
+          onClick={toggleIsCollapsed}
         >
           <HamburgerIcon />
         </div>
